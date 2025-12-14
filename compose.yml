@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/code/logs  # Persistir logs en host
+    environment:
+      - LOG_LEVEL=INFO
+      - LOG_PREDICTIONS=true
+    restart: unless-stopped
