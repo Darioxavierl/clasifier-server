@@ -9,7 +9,8 @@ services:
     ports:
       - "${PORT:-8000}:${PORT:-8000}"
     volumes:
-      - ./logs:/code/logs  # Persistir logs en host
+      - ./logs:/code/logs              # Persistir logs en host
+      - ./.env:/code/.env:ro           # Compartir .env (read-only) para cambios dinámicos
     environment:
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
       - LOG_PREDICTIONS=${LOG_PREDICTIONS:-true}
