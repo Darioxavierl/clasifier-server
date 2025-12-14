@@ -1,19 +1,19 @@
-# 🗑️ Waste Classification API
+# Waste Classification API
 
 API REST para clasificación de residuos usando MobileNetV2 con soporte dual para **PyTorch** y **TensorFlow**. Optimizado para GPU y diseñado para integración con dispositivos IoT como ESP32.
 
-## ✨ Características
+## Características
 
-- ✅ **Dual Framework**: Soporta modelos PyTorch (.pth) y TensorFlow (.h5)
-- ✅ **GPU Accelerated**: Entrenamiento 10x más rápido con NVIDIA CUDA
-- ✅ **Alta Precisión**: 91.88% de accuracy en clasificación de residuos
-- ✅ **6 Categorías**: carton, metal, papel, plastico, trash, vidrio
-- ✅ **IoT Ready**: Códigos numéricos para dispositivos ESP32
-- ✅ **Respuestas Detalladas**: Predicciones con confianza y alternativas
-- ✅ **Logging Completo**: Trazabilidad de requests y predicciones
-- ✅ **API Documentation**: Swagger UI en `/docs`
+-  **Dual Framework**: Soporta modelos PyTorch (.pth) y TensorFlow (.h5)
+-  **GPU Accelerated**: Entrenamiento 10x más rápido con NVIDIA CUDA
+-  **Alta Precisión**: 91.88% de accuracy en clasificación de residuos
+-  **6 Categorías**: carton, metal, papel, plastico, trash, vidrio
+-  **IoT Ready**: Códigos numéricos para dispositivos ESP32
+-  **Respuestas Detalladas**: Predicciones con confianza y alternativas
+-  **Logging Completo**: Trazabilidad de requests y predicciones
+-  **API Documentation**: Swagger UI en `/docs`
 
-## 📋 Requisitos
+## Requisitos
 
 ### Hardware (Recomendado)
 - GPU NVIDIA con CUDA Support (GTX 1660 SUPER o superior)
@@ -25,7 +25,7 @@ API REST para clasificación de residuos usando MobileNetV2 con soporte dual par
 - pip
 - Git (opcional)
 
-## 🚀 Instalación Rápida
+##  Instalación Rápida
 
 ### 1. Clonar Proyecto
 ```bash
@@ -69,7 +69,7 @@ cp .env.example .env
 # MODEL_PATH=models/mobilenetv2_waste.h5                # TensorFlow
 ```
 
-## 🎯 Uso
+##  Uso
 
 ### Iniciar API
 ```bash
@@ -129,7 +129,7 @@ curl -X POST http://localhost:8000/predict \
 }
 ```
 
-## 📊 Categorías de Clasificación
+## Categorías de Clasificación
 
 | Código | Categoría | Ejemplos |
 |--------|-----------|----------|
@@ -145,9 +145,9 @@ curl -X POST http://localhost:8000/predict \
 ### Usar PyTorch (Recomendado para Windows)
 
 **Ventajas:**
-- ✅ Detección automática de GPU en Windows
-- ✅ Mejor soporte comunitario
-- ✅ Más rápido en entrenamiento
+-  Detección automática de GPU en Windows
+-  Mejor soporte comunitario
+-  Más rápido en entrenamiento
 
 **Pasos:**
 ```bash
@@ -167,9 +167,9 @@ python run.py
 ### Usar TensorFlow (Para Linux/Servidores)
 
 **Ventajas:**
-- ✅ Mejor optimización para servidores
-- ✅ Compatible con TPU
-- ✅ Modelos más pequeños
+-  Mejor optimización para servidores
+-  Compatible con TPU
+-  Modelos más pequeños
 
 **Pasos:**
 ```bash
@@ -194,7 +194,7 @@ El API **detecta automáticamente** el framework basado en:
 
 No necesitas cambiar código, solo cambiar `MODEL_PATH` en `.env`.
 
-## 🧪 Pruebas
+##  Pruebas
 
 ### Test Local (Sin servidor)
 Prueba el clasificador directamente sin iniciar API:
@@ -204,9 +204,9 @@ python tests/test_prediction.py
 
 **Output esperado:**
 ```
-✅ Classifier initialized
-✅ Prediction successful
-✅ VALIDATION SUCCESSFUL
+ Classifier initialized
+ Prediction successful
+ VALIDATION SUCCESSFUL
 ```
 
 ### Test API Completo
@@ -217,10 +217,10 @@ python tests/test_api.py
 
 **Output esperado:**
 ```
-✅ API responding
-✅ /predict endpoint working
-🛑 Stopping server...
-✅ API TEST PASSED
+ API responding
+ /predict endpoint working
+ Stopping server...
+ API TEST PASSED
 ```
 
 ### Test Comprehensive
@@ -237,7 +237,7 @@ python tests/test_comprehensive.py
 RESULTS: 3/3 tests passed
 ```
 
-## 📈 Entrenar Modelo
+##  Entrenar Modelo
 
 ### Preparar Dataset
 ```bash
@@ -270,7 +270,7 @@ cd training
 python train_waste_classifier.py
 ```
 
-## 📁 Estructura de Proyecto
+##  Estructura de Proyecto
 
 ```
 Clasifier/
@@ -314,7 +314,7 @@ Clasifier/
 └── requirements.txt                 # Dependencias
 ```
 
-## ⚙️ Configuración (.env)
+##  Configuración (.env)
 
 ```env
 # Nivel de logging: DEBUG, INFO, WARNING, ERROR
@@ -335,7 +335,7 @@ MAX_FILE_SIZE=5000000
 LOG_PREDICTIONS=true
 ```
 
-## 🐳 Docker
+##  Docker
 
 ### Compilar Imagen
 ```bash
@@ -354,14 +354,14 @@ docker run -p 8000:8000 \
 docker-compose up -d
 ```
 
-## 📊 Rendimiento
+##  Rendimiento
 
 | Métrica | PyTorch | TensorFlow |
 |---------|---------|-----------|
 | **Precisión** | 91.88% | ~91% |
 | **Tiempo Inferencia** | 100-200ms | 150-250ms |
 | **Tamaño Modelo** | 13 MB | 15 MB |
-| **Entrenamiento (GPU)** | 3-4 min ⚡ | 5-6 min |
+| **Entrenamiento (GPU)** | 3-4 min  | 5-6 min |
 | **Entrenamiento (CPU)** | 30+ min | 35+ min |
 
 ## 🔍 Troubleshooting
@@ -399,7 +399,7 @@ python tests/test_prediction.py
 # Puedes forzar CPU editando app/models/mobilenet_classifier.py
 ```
 
-## 📚 Endpoints
+##  Endpoints
 
 ### POST `/predict`
 Hacer predicción en una imagen
@@ -453,15 +453,15 @@ Documentación interactiva (Swagger UI)
 ### GET `/redoc`
 Documentación en formato ReDoc
 
-## 🔐 Seguridad
+##  Seguridad
 
-- ✅ Validación de tamaño de archivo
-- ✅ Validación de formato de imagen
-- ✅ CORS configurado
-- ✅ Logging de requests
-- ✅ Error handling robusto
+-  Validación de tamaño de archivo
+-  Validación de formato de imagen
+-  CORS configurado
+-  Logging de requests
+-  Error handling robusto
 
-## 📝 Logging
+##  Logging
 
 Los logs se guardan en:
 ```
@@ -479,7 +479,7 @@ Get-Content -Path logs/app.log -Tail 20 -Wait
 tail -f logs/app.log
 ```
 
-## 🤝 Integración con ESP32
+##  Integración con ESP32
 
 El API retorna códigos numéricos para fácil integración:
 
@@ -498,7 +498,7 @@ if (response.code == 1) {
 }
 ```
 
-## 📈 Monitoreo
+##  Monitoreo
 
 El sistema loguea automáticamente:
 - Tiempo de procesamiento de cada imagen
@@ -510,7 +510,7 @@ Ver analytics:
 grep "confidence" logs/predictions.log | tail -10
 ```
 
-## 🚀 Performance Tips
+##  Performance Tips
 
 1. **GPU Acceleration**
    - Verificar logs para "cuda"
@@ -525,7 +525,7 @@ grep "confidence" logs/predictions.log | tail -10
    - Formatos: JPG, PNG, BMP
    - Max: 5MB
 
-## 📞 Soporte
+##  Soporte
 
 ### Documentación en Proyecto
 - Guías en `training/` directory
@@ -535,11 +535,11 @@ grep "confidence" logs/predictions.log | tail -10
 - Ver sección **Troubleshooting**
 - Ejecutar: `python tests/test_comprehensive.py`
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto es parte del sistema de clasificación de residuos.
 
-## 👤 Autor
+##  Autor
 
 Desarrollado por el equipo de clasificación de residuos.
 
@@ -547,4 +547,4 @@ Desarrollado por el equipo de clasificación de residuos.
 
 **Última Actualización**: Diciembre 14, 2025  
 **Versión**: 1.0  
-**Status**: ✅ Production Ready
+**Status**:  Production Ready
