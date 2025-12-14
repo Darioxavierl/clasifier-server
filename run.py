@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
 Script para ejecutar la aplicación Waste Classifier localmente
-Uso: python run.py [--host HOST] [--port PORT] [--reload]
+Uso: python run.py [--host HOST] [--port PORT] [--reload] [--workers WORKERS]
+
+Si no especificas --host o --port, se usan los valores de .env o defaults
 """
 
 import uvicorn
 import argparse
 import logging
 from pathlib import Path
+from app.config import settings
 
 # Configurar logging básico antes de importar la app
 logging.basicConfig(level=logging.INFO)
@@ -19,14 +22,14 @@ def main():
     )
     parser.add_argument(
         "--host",
-        default="127.0.0.1",
-        help="Host donde escuchar (default: 127.0.0.1)"
+        default=None,  # None = usar valor de .env o settings default
+        help=f"Host donde escuchar (default: {settings.HOST} desde .env)"
     )
     parser.add_argument(
         "--port",
         type=int,
-        default=8000,
-        help="Puerto donde escuchar (default: 8000)"
+        default=None,  # None = usar valor de .env o settings default
+        help=f"Puerto donde escuchar (default: {settings.PORT} desde .env)"
     )
     parser.add_argument(
         "--reload",
@@ -42,25 +45,31 @@ def main():
     
     args = parser.parse_args()
     
+    # Usar valores de CLI, o si no se proporcionan, usar settings de .env
+    host = args.host if args.host is not None else settings.HOST
+    port = args.port if args.port is not None else settings.PORT
+    reload = args.reload
+    workers = args.workers
+    
     logger.info("=" * 60)
     logger.info("Iniciando Waste Classifier API")
     logger.info("=" * 60)
-    logger.info(f"Host: {args.host}")
-    logger.info(f"Port: {args.port}")
-    logger.info(f"Reload: {args.reload}")
-    logger.info(f"Workers: {args.workers}")
+    logger.info(f"Host: {host}")
+    logger.info(f"Port: {port}")
+    logger.info(f"Reload: {reload}")
+    logger.info(f"Workers: {workers}")
     logger.info("=" * 60)
-    logger.info(f"Accede a: http://{args.host}:{args.port}")
-    logger.info(f"Docs: http://{args.host}:{args.port}/docs")
+    logger.info(f"Accede a: http://{host}:{port}")
+    logger.info(f"Docs: http://{host}:{port}/docs")
     logger.info("=" * 60)
     
     # Ejecutar servidor
     uvicorn.run(
         "app.main:app",
-        host=args.host,
-        port=args.port,
-        reload=args.reload,
-        workers=args.workers,
+        host=host,
+        port=port,
+        reload=reload,
+        workers=workers,
         log_level="info"
     )
 
