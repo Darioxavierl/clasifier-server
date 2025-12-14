@@ -3,6 +3,9 @@ version: '3.8'
 services:
   api:
     build: .
+    # Port mapping: HOST_PORT:CONTAINER_PORT
+    # El puerto del contenedor siempre es el definido en PORT variable
+    # El puerto del host es lo que accesas desde fuera
     ports:
       - "${PORT:-8000}:${PORT:-8000}"
     volumes:
@@ -13,4 +16,5 @@ services:
       - PORT=${PORT:-8000}
       - HOST=${HOST:-0.0.0.0}
     restart: unless-stopped
+    # La app ejecuta en el puerto definido por la variable PORT
     command: uvicorn app.main:app --host ${HOST:-0.0.0.0} --port ${PORT:-8000}

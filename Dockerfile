@@ -30,6 +30,8 @@ VOLUME ["/code/logs"]
 ENV PORT=8000
 ENV HOST=0.0.0.0
 
-EXPOSE ${PORT}
+# EXPOSE - se expone el puerto, pero es informativo
+# El puerto real lo define PORT en .env o en compose.yml
+EXPOSE 8000
 
 CMD ["sh", "-c", "uvicorn app.main:app --host ${HOST} --port ${PORT}"]
