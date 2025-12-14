@@ -1,7 +1,20 @@
 FROM python:3.10-slim
 
-# Crear usuario no-root
-RUN useradd -m -u 1000 appuser
+# Argumentos de build para UID/GID del usuario host
+# Por defecto 1000:1000 (usuario estándar en Linux)
+# Uso: docker build --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g) .
+ARG UID
+ARG GID
+ARG APP_USER
+
+ENV UID=${UID}
+ENV GID=${GID}
+ENV APP_USER=${APP_USER}
+
+# Crear usuario no-root con los mismos UID/GID del host
+# Esto evita problemas de permisos en volúmenes compartidos
+RUN groupadd -g ${GID} ${APP_USER} && \
+    useradd -m -u ${UID} -g ${GID} ${APP_USER}
 
 WORKDIR /code
 
@@ -17,11 +30,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./app /code/app
 COPY ./models /code/models
 
-# Crear directorio de logs
-RUN mkdir -p /code/logs && chown -R appuser:appuser /code
+# Crear directorio de logs y cambiar permisos al usuario correcto
+RUN mkdir -p /code/logs && chown -R ${USER_UID}:${USER_GID} /code
 
 # Cambiar al usuario no-root
-USER appuser
+USER ${APP_USER}
 
 # Volumen para persistir logs
 VOLUME ["/code/logs"]

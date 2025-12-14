@@ -2,7 +2,15 @@ version: '3.8'
 
 services:
   api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # BUILD ARGS: Pasar UID/GID del usuario host para evitar permisos incompatibles
+      # Si quieres valores específicos, descomenta y reemplaza:
+      # args:
+      #   USER_UID: 1000
+      #   USER_GID: 1000
+      # Sino, usa: ./build_with_user_perms.sh para detectar automáticamente
     # Port mapping: HOST_PORT:CONTAINER_PORT
     # El puerto del contenedor siempre es el definido en PORT variable
     # El puerto del host es lo que accesas desde fuera
