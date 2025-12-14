@@ -10,8 +10,10 @@ ENV/
 # Variables de entorno
 # ============================
 .env
-.env.*
-*.env
+.env.local
+.env.*.local
+# Excepto .env.example que es el template
+!.env.example
 
 # ============================
 # Python
