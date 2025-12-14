@@ -3,9 +3,9 @@ FROM python:3.10-slim
 # Argumentos de build para UID/GID del usuario host
 # Por defecto 1000:1000 (usuario estándar en Linux)
 # Uso: docker build --build-arg USER_UID=$(id -u) --build-arg USER_GID=$(id -g) .
-ARG UID
-ARG GID
-ARG APP_USER
+ARG UID=1000
+ARG GID=1000
+ARG APP_USER=casa
 
 ENV UID=${UID}
 ENV GID=${GID}
@@ -24,14 +24,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libopenblas0 \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
+COPY requirements-pytorch-windows.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./app /code/app
 COPY ./models /code/models
 
 # Crear directorio de logs y cambiar permisos al usuario correcto
-RUN mkdir -p /code/logs && chown -R ${USER_UID}:${USER_GID} /code
+RUN mkdir -p /code/logs && chown -R ${UID}:${GID} /code
 
 # Cambiar al usuario no-root
 USER ${APP_USER}
