@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     - LOG_PREDICTIONS: true/false
     - PORT: Puerto del servidor (requiere restart)
     - HOST: Host del servidor (requiere restart)
+    - UID: ID del usuario (informativo, para build args)
+    - GID: ID del grupo (informativo, para build args)
+    - APP_USER: Nombre del usuario (informativo, para build args)
     
     Variables que NO se pueden cambiar en .env:
     - IMG_SIZE: Tamaño de imagen (hardcoded, depende del modelo)
@@ -45,6 +48,12 @@ class Settings(BaseSettings):
     # Configuración del servidor
     PORT: int = 8000
     HOST: str = "0.0.0.0"
+    
+    # Variables de build (informativas, usadas en docker build --build-arg)
+    # Estas se pueden consultar en runtime pero no afectan la ejecución
+    UID: int = 1000
+    GID: int = 1000
+    APP_USER: str = "appuser"
     
     class Config:
         env_file = ".env"
