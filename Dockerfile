@@ -5,9 +5,10 @@ RUN useradd -m -u 1000 appuser
 
 WORKDIR /code
 
-RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
+# Instalar solo las dependencias necesarias (más específicas para Debian slim)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgomp1 \
+    libopenblas0 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
