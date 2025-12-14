@@ -3,12 +3,36 @@ from pathlib import Path
 from typing import List, Tuple, ClassVar
 
 class Settings(BaseSettings):
+    """
+    Configuración de la aplicación Waste Classifier.
+    
+    Variables que se PUEDEN cambiar en .env:
+    - MODEL_PATH: Ruta al modelo entrenado
+    - CONFIDENCE_THRESHOLD: Umbral de confianza (0.0-1.0)
+    - MAX_FILE_SIZE: Tamaño máximo en bytes
+    - LOG_LEVEL: DEBUG, INFO, WARNING, ERROR, CRITICAL
+    - LOG_DIR: Directorio para logs
+    - ENABLE_FILE_LOGGING: true/false
+    - ENABLE_CONSOLE_LOGGING: true/false
+    - LOG_PREDICTIONS: true/false
+    - PORT: Puerto del servidor (requiere restart)
+    - HOST: Host del servidor (requiere restart)
+    
+    Variables que NO se pueden cambiar en .env:
+    - IMG_SIZE: Tamaño de imagen (hardcoded, depende del modelo)
+    - CLASSES: Clases del modelo (hardcoded, depende del modelo)
+      Para cambiar estas, edita este archivo directamente.
+    """
+    
+    # Configuración del modelo
     MODEL_PATH: str = "models/mobilenetv2_waste_pytorch_best.pth"
     IMG_SIZE: Tuple[int, int] = (224, 224)
     CONFIDENCE_THRESHOLD: float = 0.7
     MAX_FILE_SIZE: int = 5_000_000  # 5MB
     
     # Clases del modelo (no son campos de config, son constantes)
+    # ⚠️ Estas NO se pueden cambiar desde .env
+    # Si necesitas cambiarlas, edita esta línea o redefine el modelo
     CLASSES: ClassVar[List[str]] = ["carton", "metal", "papel", "plastico", "trash", "vidrio"]
 
     # Configuración de logging
