@@ -1,14 +1,14 @@
-# ⚡ Quick Start - 5 Minutos
+#  Quick Start - 5 Minutos
 
 Guía mínima para empezar en 5 minutos.
 
-## 1️⃣ Activar Entorno (30 seg)
+## 1️ Activar Entorno (30 seg)
 
 ```bash
 .venv\Scripts\activate
 ```
 
-## 2️⃣ Verificar Setup (30 seg)
+## 2️ Verificar Setup (30 seg)
 
 ```bash
 python verify_setup.py
@@ -16,10 +16,10 @@ python verify_setup.py
 
 Busca:
 ```
-✅ All checks passed!
+ All checks passed!
 ```
 
-## 3️⃣ Ejecutar Test Local (1 min)
+## 3️ Ejecutar Test Local (1 min)
 
 ```bash
 python tests/test_prediction.py
@@ -27,10 +27,10 @@ python tests/test_prediction.py
 
 Resultado esperado:
 ```
-✅ VALIDATION SUCCESSFUL
+ VALIDATION SUCCESSFUL
 ```
 
-## 4️⃣ Iniciar API (20 seg)
+## 4️ Iniciar API (20 seg)
 
 ```bash
 python run.py
@@ -41,7 +41,7 @@ Espera:
 INFO:     Uvicorn running on http://0.0.0.0:8000
 ```
 
-## 5️⃣ Hacer Predicción (2 min)
+## 5️ Hacer Predicción (2 min)
 
 Opción A - Web Browser (Recomendado):
 1. Abre: http://localhost:8000/docs
@@ -101,7 +101,7 @@ python run.py
 
 ---
 
-## ❓ Si Algo Falla
+##  Si Algo Falla
 
 ```bash
 # Verificar setup
@@ -116,6 +116,6 @@ python run.py
 
 ---
 
-**¡Listo! Ya tienes la API corriendo 🚀**
+**¡Listo! Ya tienes la API corriendo **
 
 Para más detalles: Ver `README.md`

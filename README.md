@@ -133,14 +133,14 @@ curl -X POST http://localhost:8000/predict \
 
 | Código | Categoría | Ejemplos |
 |--------|-----------|----------|
-| 0️⃣ | **carton** | Cajas de cartón, empaques de papel |
-| 1️⃣ | **metal** | Latas, aluminio, contenedores metálicos |
-| 2️⃣ | **papel** | Periódicos, documentos, papel |
-| 3️⃣ | **plastico** | Botellas, bolsas, recipientes plásticos |
-| 4️⃣ | **trash** | Basura mixta, materiales generales |
-| 5️⃣ | **vidrio** | Botellas de vidrio, frascos, vidrio |
+| 0️ | **carton** | Cajas de cartón, empaques de papel |
+| 1️ | **metal** | Latas, aluminio, contenedores metálicos |
+| 2️ | **papel** | Periódicos, documentos, papel |
+| 3️ | **plastico** | Botellas, bolsas, recipientes plásticos |
+| 4️ | **trash** | Basura mixta, materiales generales |
+| 5️ | **vidrio** | Botellas de vidrio, frascos, vidrio |
 
-## 🔧 Seleccionar Framework
+##  Seleccionar Framework
 
 ### Usar PyTorch (Recomendado para Windows)
 
@@ -364,7 +364,7 @@ docker-compose up -d
 | **Entrenamiento (GPU)** | 3-4 min  | 5-6 min |
 | **Entrenamiento (CPU)** | 30+ min | 35+ min |
 
-## 🔍 Troubleshooting
+##  Troubleshooting
 
 ### El API no inicia
 ```bash

@@ -1,0 +1,118 @@
+# ============================
+# Directorios virtuales
+# ============================
+.venv/
+venv/
+env/
+ENV/
+
+# ============================
+# Control de versiones
+# ============================
+.git/
+.gitignore
+.gitattributes
+
+# ============================
+# IDE / Editores
+# ============================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.vscode/
+.DS_Store
+Thumbs.db
+
+# ============================
+# Archivos de sistema
+# ============================
+.DS_Store
+Thumbs.db
+.directory
+
+# ============================
+# Documentación
+# ============================
+README.md
+QUICKSTART.md
+README_DEPLOY.md
+FRAMEWORK_SWITCH.md
+DOCKER_UBUNTU_GUIDE.md
+TROUBLESHOOTING_DOCKER.md
+
+# ============================
+# Testing
+# ============================
+tests/
+test_*.py
+*_test.py
+pytest.ini
+.pytest_cache/
+
+# ============================
+# Desarrollo
+# ============================
+training/
+scripts/
+setup_dev.bat
+setup_dev.sh
+*.env.example
+.env.local
+
+# ============================
+# Archivos Python
+# ============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# ============================
+# Node modules (si usa cualquier JS)
+# ============================
+node_modules/
+npm-debug.log
+
+# ============================
+# Archivos temporales
+# ============================
+*.tmp
+*.temp
+*.bak
+*~
+
+# ============================
+# Certificados/Claves (NO copiar)
+# ============================
+*.pem
+*.key
+*.crt
+*.p12
+
+# ============================
+# Modelos muy grandes (opcional)
+# Los modelos deberían estar en .git/info/exclude
+# ============================
+# *.h5
+# *.pth
+# *.onnx
+# *.pb
+
+# ============================
+# Docker
+# ============================
+.dockerignore
+Dockerfile
+
+# ============================
+# Configuración local
+# ============================
+.env
+.env.*
+!.env.example

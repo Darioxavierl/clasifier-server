@@ -7,7 +7,7 @@ from pathlib import Path
 
 def check_structure():
     """Verify project structure"""
-    print("📁 Checking project structure...")
+    print(" Checking project structure...")
     
     required_dirs = [
         "app",
@@ -27,11 +27,11 @@ def check_structure():
     missing = []
     for dir_name in required_dirs:
         if not Path(dir_name).exists():
-            missing.append(f"  ❌ Directory: {dir_name}/")
+            missing.append(f"   Directory: {dir_name}/")
     
     for file_name in required_files:
         if not Path(file_name).exists():
-            missing.append(f"  ❌ File: {file_name}")
+            missing.append(f"   File: {file_name}")
     
     if missing:
         print("\nMissing items:")
@@ -39,12 +39,12 @@ def check_structure():
             print(item)
         return False
     
-    print("  ✅ Structure OK")
+    print("   Structure OK")
     return True
 
 def check_models():
     """Verify model files exist"""
-    print("\n🤖 Checking model files...")
+    print("\n Checking model files...")
     
     models_dir = Path("models")
     pytorch_model = models_dir / "mobilenetv2_waste_pytorch_best.pth"
@@ -53,18 +53,18 @@ def check_models():
     pytorch_ok = pytorch_model.exists()
     tensorflow_ok = tensorflow_model.exists()
     
-    print(f"  {'✅' if pytorch_ok else '❌'} PyTorch model: {pytorch_model.name}")
-    print(f"  {'✅' if tensorflow_ok else '❌'} TensorFlow model: {tensorflow_model.name}")
+    print(f"  {'ok' if pytorch_ok else 'err'} PyTorch model: {pytorch_model.name}")
+    print(f"  {'ok' if tensorflow_ok else 'err'} TensorFlow model: {tensorflow_model.name}")
     
     return pytorch_ok or tensorflow_ok
 
 def check_env():
     """Verify .env configuration"""
-    print("\n⚙️  Checking configuration...")
+    print("\n  Checking configuration...")
     
     env_file = Path(".env")
     if not env_file.exists():
-        print("  ❌ .env file not found")
+        print(" .env file not found")
         return False
     
     content = env_file.read_text()
@@ -77,7 +77,7 @@ def check_env():
     
     all_ok = True
     for key, ok in checks:
-        print(f"  {'✅' if ok else '❌'} {key}")
+        print(f"  {'ok' if ok else 'err'} {key}")
         if not ok:
             all_ok = False
     
@@ -85,7 +85,7 @@ def check_env():
 
 def check_dependencies():
     """Check Python dependencies"""
-    print("\n📦 Checking dependencies...")
+    print("\n Checking dependencies...")
     
     deps = {
         "fastapi": "FastAPI",
@@ -100,9 +100,9 @@ def check_dependencies():
     for module, name in deps.items():
         try:
             __import__(module)
-            print(f"  ✅ {name}")
+            print(f"  ok {name}")
         except ImportError:
-            print(f"  ❌ {name}")
+            print(f"  err {name}")
             all_ok = False
     
     # Check for torch or tensorflow
@@ -110,28 +110,28 @@ def check_dependencies():
     torch_ok = False
     try:
         import torch
-        print(f"  ✅ PyTorch {torch.__version__}")
+        print(f"  ok PyTorch {torch.__version__}")
         torch_ok = True
     except ImportError:
-        print(f"  ⚠️  PyTorch not installed")
+        print(f" warn  PyTorch not installed")
     
     tf_ok = False
     try:
         import tensorflow as tf
-        print(f"  ✅ TensorFlow {tf.__version__}")
+        print(f"  ok TensorFlow {tf.__version__}")
         tf_ok = True
     except ImportError:
-        print(f"  ⚠️  TensorFlow not installed")
-    
+        print(f"  warn TensorFlow not installed")
+
     if not (torch_ok or tf_ok):
-        print("\n  ⚠️  At least one framework (PyTorch or TensorFlow) is required!")
+        print("\n  warn  At least one framework (PyTorch or TensorFlow) is required!")
         all_ok = False
     
     return all_ok
 
 def check_gpu():
     """Check GPU availability"""
-    print("\n🎮 Checking GPU...")
+    print("\n Checking GPU...")
     
     # Check PyTorch GPU
     try:
@@ -139,11 +139,11 @@ def check_gpu():
         if torch.cuda.is_available():
             device_name = torch.cuda.get_device_name(0)
             device_count = torch.cuda.device_count()
-            print(f"  ✅ PyTorch GPU: {device_name}")
+            print(f"   PyTorch GPU: {device_name}")
             print(f"     CUDA Available: {torch.cuda.is_available()}")
             print(f"     Device Count: {device_count}")
         else:
-            print(f"  ℹ️  PyTorch GPU: Not available (CPU mode)")
+            print(f"    PyTorch GPU: Not available (CPU mode)")
     except ImportError:
         pass
     
@@ -152,11 +152,11 @@ def check_gpu():
         import tensorflow as tf
         devices = tf.config.list_physical_devices('GPU')
         if devices:
-            print(f"  ✅ TensorFlow GPU: {len(devices)} device(s)")
+            print(f"  ok TensorFlow GPU: {len(devices)} device(s)")
             for device in devices:
                 print(f"     - {device}")
         else:
-            print(f"  ℹ️  TensorFlow GPU: Not available (CPU mode)")
+            print(f"    TensorFlow GPU: Not available (CPU mode)")
     except ImportError:
         pass
 
@@ -180,7 +180,7 @@ def main():
             result = check_func()
             results[name] = result if result is not None else True
         except Exception as e:
-            print(f"\n❌ Error checking {name}: {str(e)}")
+            print(f"\n Error checking {name}: {str(e)}")
             results[name] = False
     
     # Summary
@@ -190,7 +190,7 @@ def main():
     
     for name, result in results.items():
         if name != "GPU":
-            icon = "✅" if result else "❌"
+            icon = "ok" if result else "err"
             print(f"{icon} {name}")
     
     # Final status
@@ -198,14 +198,14 @@ def main():
     
     print("\n" + "=" * 60)
     if critical_ok:
-        print("✅ All checks passed!")
+        print(" All checks passed!")
         print("\nNext steps:")
         print("  1. Run tests:  python tests/test_comprehensive.py")
         print("  2. Start API:  python run.py")
         print("  3. Open:       http://localhost:8000/docs")
         return 0
     else:
-        print("❌ Some checks failed. Please fix issues above.")
+        print(" Some checks failed. Please fix issues above.")
         return 1
 
 if __name__ == "__main__":

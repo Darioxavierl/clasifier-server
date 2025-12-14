@@ -1,4 +1,4 @@
-# 🔄 Framework Switching Guide
+#  Framework Switching Guide
 
 Guía rápida para cambiar entre PyTorch y TensorFlow.
 
@@ -8,7 +8,7 @@ Guía rápida para cambiar entre PyTorch y TensorFlow.
 |---------|---------|-----------|
 | **Archivo** | `.pth` | `.h5` |
 | **SO Ideal** | Windows/Linux | Linux/Servidores |
-| **GPU** | ⚡ Rápido en Windows | Más estable en Linux |
+| **GPU** |  Rápido en Windows | Más estable en Linux |
 | **Instalación** | Fácil | Requiere CUDA completo |
 | **Velocidad** | 3-4 min entrenamiento | 5-6 min entrenamiento |
 | **Comunidad** | Muy activa | Estable |
@@ -102,8 +102,8 @@ python tests/test_prediction.py
 ## Archivos de Modelo
 
 **Incluidos en el proyecto:**
-- ✅ `models/mobilenetv2_waste_pytorch_best.pth` - PyTorch (13 MB)
-- ✅ `models/mobilenetv2_waste.h5` - TensorFlow (15 MB)
+-  `models/mobilenetv2_waste_pytorch_best.pth` - PyTorch (13 MB)
+-  `models/mobilenetv2_waste.h5` - TensorFlow (15 MB)
 
 Ambos tienen la misma arquitectura y precisión (~91.88%).
 
@@ -126,11 +126,11 @@ No necesitas cambiar código, solo cambiar `MODEL_PATH`.
 ## Compatibilidad
 
 ### Windows
-- **Recomendado**: PyTorch ✅
+- **Recomendado**: PyTorch 
 - Funciona: TensorFlow (requiere CUDA completo)
 
 ### Linux
-- **Recomendado**: TensorFlow ✅
+- **Recomendado**: TensorFlow 
 - Funciona: PyTorch
 
 ### macOS
