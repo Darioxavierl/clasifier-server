@@ -1,5 +1,8 @@
 FROM python:3.10-slim
 
+# Crear usuario no-root
+RUN useradd -m -u 1000 appuser
+
 WORKDIR /code
 
 RUN apt-get update && apt-get install -y \
@@ -14,7 +17,10 @@ COPY ./app /code/app
 COPY ./models /code/models
 
 # Crear directorio de logs
-RUN mkdir -p /code/logs
+RUN mkdir -p /code/logs && chown -R appuser:appuser /code
+
+# Cambiar al usuario no-root
+USER appuser
 
 # Volumen para persistir logs
 VOLUME ["/code/logs"]
