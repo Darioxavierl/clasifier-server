@@ -1,0 +1,35 @@
+# Dependencias para Windows con PyTorch + GPU NVIDIA
+
+# API Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# Deep Learning - Windows (PyTorch con CUDA)
+# INSTALAR: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch>=2.5.0
+torchvision>=0.20.0
+torchaudio>=2.5.0
+
+# Visión por computadora
+opencv-python-headless==4.9.0.80
+pillow==10.4.0
+
+# Validación y configuración
+pydantic==2.5.0
+pydantic-settings==2.1.0
+numpy==1.26.4
+
+# Utilidades
+python-dotenv==1.0.0
+requests==2.31.0
+matplotlib==3.9.2
+scipy==1.11.4
+
+# GPU (opcional, para verificación)
+cupy-cuda13x>=13.0.0
+
+# Dev
+pytest==7.4.4
+black==23.12.1
+flake8==6.1.0

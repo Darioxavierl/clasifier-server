@@ -1,15 +1,15 @@
 from pydantic_settings import BaseSettings
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Tuple, ClassVar
 
 class Settings(BaseSettings):
-    MODEL_PATH: str = "models/mobilenetv2_waste.h5"
+    MODEL_PATH: str = "models/mobilenetv2_waste_pytorch_best.pth"
     IMG_SIZE: Tuple[int, int] = (224, 224)
     CONFIDENCE_THRESHOLD: float = 0.7
     MAX_FILE_SIZE: int = 5_000_000  # 5MB
     
-    # Clases del modelo
-    CLASSES: List[str] = ["plastico", "papel", "vidrio", "metal", "organico"]
+    # Clases del modelo (no son campos de config, son constantes)
+    CLASSES: ClassVar[List[str]] = ["carton", "metal", "papel", "plastico", "trash", "vidrio"]
 
     # Configuración de logging
     LOG_LEVEL: str = "INFO"

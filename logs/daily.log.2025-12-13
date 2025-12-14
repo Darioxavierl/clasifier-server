@@ -1,0 +1,33 @@
+2025-12-13 21:53:24 | [32mINFO[0m | N/A | waste_classifier | setup_logger:144 | Logger 'waste_classifier' configurado correctamente
+2025-12-13 21:53:24 | [32mINFO[0m | N/A | waste_classifier | setup_logger:144 | Logger 'waste_classifier' configurado correctamente
+2025-12-13 21:55:46 | [32mINFO[0m | N/A | waste_classifier | setup_logger:144 | Logger 'waste_classifier' configurado correctamente
+2025-12-13 21:58:50 | [32mINFO[0m | N/A | waste_classifier | setup_logger:144 | Logger 'waste_classifier' configurado correctamente
+2025-12-13 21:58:50 | [32mINFO[0m | N/A | waste_classifier | setup_logger:144 | Logger 'waste_classifier' configurado correctamente
+2025-12-13 21:59:03 | [32mINFO[0m | N/A | waste_classifier | setup_logger:144 | Logger 'waste_classifier' configurado correctamente
+2025-12-13 21:59:03 | [32mINFO[0m | N/A | waste_classifier | setup_logger:144 | Logger 'waste_classifier' configurado correctamente
+2025-12-13 22:00:04 | [32mINFO[0m | N/A | waste_classifier | setup_logger:144 | Logger 'waste_classifier' configurado correctamente
+2025-12-13 22:00:04 | [32mINFO[0m | N/A | waste_classifier | setup_logger:144 | Logger 'waste_classifier' configurado correctamente
+2025-12-13 22:00:04 | [32mINFO[0m | N/A | waste_classifier | startup_event:82 | ==================================================
+2025-12-13 22:00:04 | [32mINFO[0m | N/A | waste_classifier | startup_event:83 | Iniciando Waste Classifier API
+2025-12-13 22:00:04 | [32mINFO[0m | N/A | waste_classifier | startup_event:84 | Log Level: DEBUG
+2025-12-13 22:00:04 | [32mINFO[0m | N/A | waste_classifier | startup_event:85 | Log Directory: logs
+2025-12-13 22:00:04 | [32mINFO[0m | N/A | waste_classifier | startup_event:86 | Modelo: models/mobilenetv2_waste.h5
+2025-12-13 22:00:04 | [32mINFO[0m | N/A | waste_classifier | startup_event:87 | ==================================================
+2025-12-13 22:00:21 | [32mINFO[0m | d39772e2 | waste_classifier | log_requests:46 | [d39772e2] GET /health
+2025-12-13 22:00:21 | [32mINFO[0m | d39772e2 | waste_classifier | log_requests:59 | [d39772e2] Status: 200 | Time: 0.001s
+2025-12-13 22:00:21 | [32mINFO[0m | 5581d672 | waste_classifier | log_requests:46 | [5581d672] GET /
+2025-12-13 22:00:21 | [32mINFO[0m | 5581d672 | waste_classifier | log_requests:59 | [5581d672] Status: 200 | Time: 0.001s
+2025-12-13 22:00:21 | [32mINFO[0m | 906f37cd | waste_classifier | log_requests:46 | [906f37cd] POST /predict
+2025-12-13 22:00:21 | [32mINFO[0m | 906f37cd | waste_classifier | _log:178 | Recibiendo imagen: test_image.jpg
+2025-12-13 22:00:21 | [32mINFO[0m | 906f37cd | waste_classifier | _log:178 | Predicción cruda: plastico (20.08%)
+2025-12-13 22:00:21 | [32mINFO[0m | 906f37cd | waste_classifier | _log:178 | Clasificación exitosa: indeterminado | Código: 0 | Tiempo: 0.073s
+2025-12-13 22:00:21 | [32mINFO[0m | 906f37cd | waste_classifier | log_requests:59 | [906f37cd] Status: 200 | Time: 0.074s
+2025-12-13 22:00:21 | [32mINFO[0m | 39ba34c8 | waste_classifier | log_requests:46 | [39ba34c8] POST /predict
+2025-12-13 22:00:21 | [32mINFO[0m | 39ba34c8 | waste_classifier | _log:178 | Recibiendo imagen: invalid.jpg
+2025-12-13 22:00:21 | [32mINFO[0m | 39ba34c8 | waste_classifier | log_requests:59 | [39ba34c8] Status: 400 | Time: 0.002s
+2025-12-13 22:03:20 | [32mINFO[0m | 31542bc6 | waste_classifier | log_requests:46 | [31542bc6] GET /docs
+2025-12-13 22:03:20 | [32mINFO[0m | 31542bc6 | waste_classifier | log_requests:59 | [31542bc6] Status: 200 | Time: 0.001s
+2025-12-13 22:03:20 | [32mINFO[0m | cc4ea3d1 | waste_classifier | log_requests:46 | [cc4ea3d1] GET /openapi.json
+2025-12-13 22:03:20 | [32mINFO[0m | cc4ea3d1 | waste_classifier | log_requests:59 | [cc4ea3d1] Status: 200 | Time: 0.004s
+2025-12-13 22:03:44 | [32mINFO[0m | 64bea55f | waste_classifier | log_requests:46 | [64bea55f] GET /redoc
+2025-12-13 22:03:44 | [32mINFO[0m | 64bea55f | waste_classifier | log_requests:59 | [64bea55f] Status: 200 | Time: 0.001s
