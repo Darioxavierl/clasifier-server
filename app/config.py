@@ -18,6 +18,10 @@ class Settings(BaseSettings):
     ENABLE_CONSOLE_LOGGING: bool = True
     LOG_PREDICTIONS: bool = True  # Para análisis posterior
     
+    # Configuración del servidor
+    PORT: int = 8000
+    HOST: str = "0.0.0.0"
+    
     class Config:
         env_file = ".env"
 

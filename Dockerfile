@@ -25,6 +25,10 @@ USER appuser
 # Volumen para persistir logs
 VOLUME ["/code/logs"]
 
-EXPOSE 8000
+# Variables de entorno por defecto
+ENV PORT=8000
+ENV HOST=0.0.0.0
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE ${PORT}
+
+CMD ["sh", "-c", "uvicorn app.main:app --host ${HOST} --port ${PORT}"]
